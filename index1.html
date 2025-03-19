@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var storeUrl = "";
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                storeUrl = "https://apps.apple.com/app/id123456789"; // Replace with your App Store URL
+            } else if (/android/i.test(userAgent)) {
+                storeUrl = "https://play.google.com/store/apps/details?id=com.example.app"; // Replace with your Play Store URL
+            } else {
+                storeUrl = "https://www.google.com"; // Replace with your fallback page
+            }
+
+            // Delay redirect to allow page load
+            setTimeout(function () {
+                window.location.href = storeUrl;
+            }, 1000);
+
+            // Update the link for manual click
+            document.getElementById("store-link").href = storeUrl;
+        });
+    </script>
+</head>
+<body>
+    <p>Redirecting you... If not redirected, <a id="store-link" href="#">click here</a>.</p>
+</body>
+</html>
